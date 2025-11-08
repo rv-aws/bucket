@@ -1,12 +1,11 @@
-// app-stack.ts
 import { App, Stack, StackProps, RemovalPolicy } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
 import { Bucket, BlockPublicAccess, BucketEncryption } from 'aws-cdk-lib/aws-s3';
 
-export class AppStack extends Stack {
-  constructor(scope: Construct, id: string, props?: StackProps) {
+export class S3BucketStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props);
 
+    // Create S3 bucket with secure defaults
     new Bucket(this, 'MyExampleBucket', {
       bucketName: `my-example-bucket-${this.account}-${this.region}`,
       versioned: true,
@@ -14,6 +13,15 @@ export class AppStack extends Stack {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       removalPolicy: RemovalPolicy.DESTROY, // Use RETAIN for production
       autoDeleteObjects: true, // Only works with DESTROY removal policy
-    });   
+    });
   }
 }
+
+const app = new App();
+new S3BucketStack(app, 'S3BucketStack', {
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION,
+  },
+});
+app.synth();
