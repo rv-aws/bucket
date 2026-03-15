@@ -169,7 +169,7 @@ exports[`Snapshot 1`] = `
             [
               "Lambda function for auto-deleting objects in ",
               {
-                "Ref": "MyExampleBucket927A78A6",
+                "Ref": "Windows11SettingsBucket0A18746D",
               },
               " S3 bucket.",
             ],
@@ -218,7 +218,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::IAM::Role",
     },
-    "MyExampleBucket927A78A6": {
+    "Windows11SettingsBucket0A18746D": {
       "DeletionPolicy": "Delete",
       "Properties": {
         "BucketEncryption": {
@@ -234,7 +234,7 @@ exports[`Snapshot 1`] = `
           "Fn::Join": [
             "",
             [
-              "my-example-bucket-",
+              "windows-11-settings-",
               {
                 "Ref": "AWS::AccountId",
               },
@@ -264,14 +264,14 @@ exports[`Snapshot 1`] = `
       "Type": "AWS::S3::Bucket",
       "UpdateReplacePolicy": "Delete",
     },
-    "MyExampleBucketAutoDeleteObjectsCustomResourceE09830D6": {
+    "Windows11SettingsBucketAutoDeleteObjectsCustomResourceC9CA152D": {
       "DeletionPolicy": "Delete",
       "DependsOn": [
-        "MyExampleBucketPolicyA00A34B4",
+        "Windows11SettingsBucketPolicy36E6AA36",
       ],
       "Properties": {
         "BucketName": {
-          "Ref": "MyExampleBucket927A78A6",
+          "Ref": "Windows11SettingsBucket0A18746D",
         },
         "ServiceToken": {
           "Fn::GetAtt": [
@@ -283,10 +283,10 @@ exports[`Snapshot 1`] = `
       "Type": "Custom::S3AutoDeleteObjects",
       "UpdateReplacePolicy": "Delete",
     },
-    "MyExampleBucketPolicyA00A34B4": {
+    "Windows11SettingsBucketPolicy36E6AA36": {
       "Properties": {
         "Bucket": {
-          "Ref": "MyExampleBucket927A78A6",
+          "Ref": "Windows11SettingsBucket0A18746D",
         },
         "PolicyDocument": {
           "Statement": [
@@ -309,7 +309,7 @@ exports[`Snapshot 1`] = `
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "MyExampleBucket927A78A6",
+                    "Windows11SettingsBucket0A18746D",
                     "Arn",
                   ],
                 },
@@ -319,7 +319,7 @@ exports[`Snapshot 1`] = `
                     [
                       {
                         "Fn::GetAtt": [
-                          "MyExampleBucket927A78A6",
+                          "Windows11SettingsBucket0A18746D",
                           "Arn",
                         ],
                       },
