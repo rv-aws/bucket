@@ -1,6 +1,6 @@
-# Welcome to your CDK TypeScript project
+# Windows 11 settings bucket
 
-This is a blank project for CDK development with TypeScript.
+This AWS CDK TypeScript project provisions an S3 bucket for Windows 11 settings backups with secure defaults.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
